@@ -12,6 +12,15 @@
     "url": "https://github.com/isotopic/hyper-focus/issues"
   },
   "homepage": "https://github.com/isotopic/hyper-focus#readme",
+  "keywords": [
+    "focus",
+    "productivity",
+    "code-reading",
+    "highlight",
+    "javascript",
+    "typescript",
+    "react"
+  ],
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -32,6 +41,30 @@
         "title": "Toggle Hyper Focus"
       }
     ],
+    "configuration": {
+      "title": "Hyper Focus",
+      "properties": {
+        "hyperFocus.dimOpacity": {
+          "type": "number",
+          "default": 0.4,
+          "minimum": 0.1,
+          "maximum": 1,
+          "description": "Opacity level for dimmed (unrelated) code. Lower values make the code more transparent."
+        },
+        "hyperFocus.focusOpacity": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.1,
+          "maximum": 1,
+          "description": "Opacity level for focused code."
+        },
+        "hyperFocus.focusBackgroundColor": {
+          "type": "string",
+          "default": "rgba(128, 128, 220, 0.2)",
+          "description": "Background color for highlighted focused code (supports rgba, hex, etc)."
+        }
+      }
+    },
     "keybindings": [
       {
         "command": "extension.hyperFocus",
@@ -40,7 +73,12 @@
         "win": "alt+h",
         "linux": "alt+h"
       }
-    ]
+    ],
+    "icon": "icon.png",
+    "galleryBanner": {
+      "color": "#242427",
+      "theme": "dark"
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

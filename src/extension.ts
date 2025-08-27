@@ -4,16 +4,60 @@ let focusModeActive = false;
 let dimDecoration: vscode.TextEditorDecorationType;
 let focusDecoration: vscode.TextEditorDecorationType;
 
-export function activate(context: vscode.ExtensionContext) {
-  // Create decoration styles
+function getConfiguration() {
+  const config = vscode.workspace.getConfiguration("hyperFocus");
+  return {
+    dimOpacity: config.get<number>("dimOpacity", 0.4),
+    focusOpacity: config.get<number>("focusOpacity", 1.0),
+    focusBackgroundColor: config.get<string>(
+      "focusBackgroundColor",
+      "rgba(128, 128, 220, 0.2)"
+    ),
+  };
+}
+
+function createDecorations() {
+  const config = getConfiguration();
+
+  // Dispose existing decorations if they exist
+  if (dimDecoration) {
+    dimDecoration.dispose();
+  }
+  if (focusDecoration) {
+    focusDecoration.dispose();
+  }
+
+  // Create new decorations with current configuration
   dimDecoration = vscode.window.createTextEditorDecorationType({
-    opacity: "0.4",
+    opacity: config.dimOpacity.toString(),
   });
 
   focusDecoration = vscode.window.createTextEditorDecorationType({
-    opacity: "1.0",
-    backgroundColor: "rgba(128, 128, 220, 0.2)", // Subtle highlight
+    opacity: config.focusOpacity.toString(),
+    backgroundColor: config.focusBackgroundColor,
   });
+}
+
+export function activate(context: vscode.ExtensionContext) {
+  // Create initial decoration styles
+  createDecorations();
+
+  // Listen for configuration changes
+  const configurationChange = vscode.workspace.onDidChangeConfiguration(
+    (event) => {
+      if (event.affectsConfiguration("hyperFocus")) {
+        createDecorations();
+
+        // If focus mode is active, refresh the decorations
+        if (focusModeActive) {
+          const editor = vscode.window.activeTextEditor;
+          if (editor) {
+            updateFocusHighlight(editor);
+          }
+        }
+      }
+    }
+  );
 
   // Command to toggle mode
   const toggleCommand = vscode.commands.registerCommand(
@@ -38,7 +82,11 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(toggleCommand, selectionChange);
+  context.subscriptions.push(
+    toggleCommand,
+    selectionChange,
+    configurationChange
+  );
 }
 
 function activateFocusMode() {
