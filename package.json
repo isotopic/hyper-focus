@@ -14,6 +14,10 @@
     "url": "https://github.com/isotopic/hyper-focus/issues"
   },
   "homepage": "https://github.com/isotopic/hyper-focus#readme",
+  "galleryBanner": {
+    "color": "#242427",
+    "theme": "dark"
+  },
   "keywords": [
     "focus",
     "productivity",
@@ -75,11 +79,7 @@
         "win": "alt+h",
         "linux": "alt+h"
       }
-    ],
-    "galleryBanner": {
-      "color": "#242427",
-      "theme": "dark"
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
