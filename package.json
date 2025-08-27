@@ -35,10 +35,10 @@
     "keybindings": [
       {
         "command": "extension.hyperFocus",
-        "key": "cmd+h cmd+f",
-        "mac": "cmd+h cmd+f",
-        "win": "ctrl+h ctrl+f",
-        "linux": "ctrl+h ctrl+f"
+        "key": "alt+h",
+        "mac": "alt+h",
+        "win": "alt+h",
+        "linux": "alt+h"
       }
     ]
   },

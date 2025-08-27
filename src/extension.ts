@@ -7,7 +7,7 @@ let focusDecoration: vscode.TextEditorDecorationType;
 export function activate(context: vscode.ExtensionContext) {
   // Create decoration styles
   dimDecoration = vscode.window.createTextEditorDecorationType({
-    opacity: "0.45",
+    opacity: "0.4",
   });
 
   focusDecoration = vscode.window.createTextEditorDecorationType({
@@ -63,6 +63,9 @@ function updateFocusHighlight(editor: vscode.TextEditor) {
   const wordRange = editor.document.getWordRangeAtPosition(selection.active);
 
   if (!wordRange) {
+    // Reset to normal view when clicking on non-symbol area
+    editor.setDecorations(dimDecoration, []);
+    editor.setDecorations(focusDecoration, []);
     return;
   }
 
