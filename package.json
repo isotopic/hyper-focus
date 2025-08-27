@@ -1,7 +1,7 @@
 {
   "name": "hyper-focus",
   "publisher": "isotopic",
-  "displayName": "hyper-focus",
+  "displayName": "Hyper Focus",
   "description": "Find your way into the wilds of code by dimming the distractions.",
   "version": "0.0.2",
   "license": "MIT",
@@ -75,7 +75,7 @@
         "linux": "alt+h"
       }
     ],
-    "icon": "icon.png",
+    "icon": "extension/icon.png",
     "galleryBanner": {
       "color": "#242427",
       "theme": "dark"

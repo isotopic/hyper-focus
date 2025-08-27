@@ -1,4 +1,4 @@
-# Hyper Focus - VS Code Extension
+# Hyper Focus
 
 A VS Code extension that improves focus while reading code by dimming lines unrelated to the selected symbol.
 
