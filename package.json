@@ -1,0 +1,67 @@
+{
+  "name": "hyper-focus",
+  "displayName": "hyper-focus",
+  "description": "Find your way into the wilds of code by dimming the distractions.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isotopic/hyper-focus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isotopic/hyper-focus/issues"
+  },
+  "homepage": "https://github.com/isotopic/hyper-focus#readme",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.hyperFocus",
+        "title": "Toggle Hyper Focus"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.hyperFocus",
+        "key": "cmd+h cmd+f",
+        "mac": "cmd+h cmd+f",
+        "win": "ctrl+h ctrl+f",
+        "linux": "ctrl+h ctrl+f"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "build": "vsce package",
+    "install-local": "code --install-extension *.vsix",
+    "dev-cycle": "npm run compile && npm run build && npm run install-local"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
