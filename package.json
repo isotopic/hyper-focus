@@ -45,6 +45,10 @@
       {
         "command": "extension.hyperFocus",
         "title": "Toggle Hyper Focus"
+      },
+      {
+        "command": "extension.hyperFocusReset",
+        "title": "Reset Hyper Focus Highlight"
       }
     ],
     "configuration": {
@@ -78,6 +82,14 @@
         "mac": "alt+h",
         "win": "alt+h",
         "linux": "alt+h"
+      },
+      {
+        "command": "extension.hyperFocusReset",
+        "key": "escape",
+        "mac": "escape",
+        "win": "escape",
+        "linux": "escape",
+        "when": "editorTextFocus"
       }
     ]
   },

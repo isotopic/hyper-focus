@@ -82,10 +82,26 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  // Command to reset highlight with ESC key
+  const resetHighlightCommand = vscode.commands.registerCommand(
+    "extension.hyperFocusReset",
+    () => {
+      if (focusModeActive) {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+          // Reset to normal view
+          editor.setDecorations(dimDecoration, []);
+          editor.setDecorations(focusDecoration, []);
+        }
+      }
+    }
+  );
+
   context.subscriptions.push(
     toggleCommand,
     selectionChange,
-    configurationChange
+    configurationChange,
+    resetHighlightCommand
   );
 }
 
