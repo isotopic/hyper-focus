@@ -4,7 +4,7 @@
   "displayName": "Hyper Focus",
   "icon": "icon.png",
   "description": "Find your way into the wilds of code by dimming the distractions.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "MIT",
   "repository": {
     "type": "git",
